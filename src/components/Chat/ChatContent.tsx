@@ -45,7 +45,7 @@ export const ChatContent: FC<ChatContentType> = (props) => {
         const ref = scrollToBottomRef.current as unknown as HTMLDivElement
         setTimeout(() => {
             ref.scrollTo({
-                top: document.body.scrollHeight,
+                top: ref.scrollHeight,
                 left: 0,
                 behavior: "smooth"
             })

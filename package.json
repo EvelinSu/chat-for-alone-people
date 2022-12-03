@@ -1,6 +1,6 @@
 {
   "name": "chat",
-  "homepage": "https://EvelinSu.github.io/chatForAlonePeople",
+  "homepage": "https://EvelinSu.github.io/chat-for-alone-people",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

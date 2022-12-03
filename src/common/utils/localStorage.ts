@@ -1,7 +1,6 @@
-export function getStateFromLS<T> (key: string, currentState: T ) {
-    const stateAsString = localStorage.getItem(key)
-    if (stateAsString !== null) currentState = JSON.parse(stateAsString) as T
-    return currentState
+export async function getStateFromLS<T> (key: string ) {
+    const stateAsString = await localStorage.getItem(key)
+    if (stateAsString !== null) return JSON.parse(stateAsString) as T
 }
 
 export function saveStateToLS<T>(key: string, state: T) {

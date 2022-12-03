@@ -58,6 +58,7 @@ const ChatPanel: FC<TChatPanelProps> = (props) => {
                 onFocus={onFocusHandler}
                 onChange={onChangeHandler}
                 placeholder={"Write your message..."}
+                autoFocus
             ></SChatTextarea>
             <SChatButton
                 disabled={message.trim() === ''}

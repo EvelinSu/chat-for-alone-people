@@ -24,13 +24,19 @@ export const ChatContent: FC<ChatContentType> = (props) => {
     const scrollToBottomRef = useRef(null)
 
     const addNewMessageHandler = async (newMessage: MessageType) => {
-        await saveStateToLS<MessageType[]>("messages", [...messages, newMessage])
-        setMessages([...messages, newMessage])
+        await getMessagesFromLS()
+            .then((res) => {
+                saveStateToLS<MessageType[]>("messages", [...res, newMessage])
+                setMessages([...res, newMessage])
+            })
     }
 
-    const getMessagesFromLS = () => {
-        const currentMessages = getStateFromLS<MessageType[]>("messages", messages)
-        currentMessages && setMessages(currentMessages)
+    const getMessagesFromLS = async () => {
+        const currentMessages = await getStateFromLS<MessageType[]>("messages")
+        if (currentMessages) {
+            setMessages(currentMessages)
+        }
+        return currentMessages || []
     }
 
     const checkActualMessages = () => {

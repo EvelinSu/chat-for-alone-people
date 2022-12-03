@@ -4,6 +4,7 @@ import {UserType} from "../../../App";
 import {v1} from "uuid";
 import {getStringDate} from "../../../common/utils/getStringDate";
 import {MessageType} from "../ChatContent";
+import {SendFillIcon} from "../../../assets/icons/SendFillIcon";
 
 type TChatPanelProps = {
     addNewMessage: (newMessage: MessageType) => void
@@ -64,7 +65,7 @@ const ChatPanel: FC<TChatPanelProps> = (props) => {
                 disabled={message.trim() === ''}
                 onClick={addNewMessageHandler}
             >
-                Send
+                <SendFillIcon/>
             </SChatButton>
         </SChatPanel>
     );

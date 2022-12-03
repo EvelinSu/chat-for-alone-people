@@ -6,12 +6,11 @@ export const SChat = styled.div((props) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     backgroundColor: theme.colors.darkAlpha,
-    maxWidth: 750,
+    maxWidth: 850,
     width: "100%",
-    height: 650,
+    height: "100%",
     overflow: "auto",
     borderRadius: 30,
-    boxSizing: "border-box",
 }))
 
 export const SChatMessages = styled.div((props) => ({

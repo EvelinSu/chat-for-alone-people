@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {theme} from "../../../styles/baseTheme";
 
 export const SChatTextarea = styled.textarea((props) => ({
     padding: "10px 15px",
@@ -21,8 +20,7 @@ export const SChatTextarea = styled.textarea((props) => ({
 
 export const SChatPanel = styled.div((props) => ({
     display: "flex",
-    gap: 20,
-    padding: 15,
+    padding: "15px 0 15px 15px",
     alignItems: "center",
     marginTop: "auto"
 }))
@@ -32,17 +30,18 @@ export const SChatButton = styled.button((props) => ({
     borderRadius: 20,
     border: "none",
     outline: "none",
-    padding: "0 30px",
+    padding: "0 15px",
     fontSize: 16,
-    backgroundColor: theme.colors.button.success,
+    backgroundColor: "transparent",
     color: "#fff",
     cursor: "pointer",
     transition: "0.2s",
-    "&:hover": {
-        transform: "scale(0.9)"
+    svg: {
+      width: 40,
+      height: 40,
     },
-    "&:active": {
-        transform: "scale(0.9) translateY(3px)"
+    "&:hover": {
+        transform: "scale(0.8)"
     },
     "&:disabled": {
         opacity: 0.3,

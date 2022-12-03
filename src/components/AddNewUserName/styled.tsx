@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {theme} from "../../../styles/baseTheme";
+import {theme} from "../../styles/baseTheme";
 
 export const SAddNewUserName = styled.div((props) => ({
     display: "flex",
@@ -7,11 +7,12 @@ export const SAddNewUserName = styled.div((props) => ({
     justifyContent: "center",
     flexDirection: "column",
     gap: 20,
+    padding: 20,
+    maxWidth: "100%",
     height: "100%"
 }))
 
 export const SText = styled.div((props) => ({
-    opacity: 0.5,
     fontSize: 18,
     textAlign: "center",
 }))
@@ -23,6 +24,7 @@ export const Input = styled.input(props => ({
     outline: "none",
     backgroundColor: theme.colors.input.default,
     color: "inherit",
+    width: "100%",
     "&:focus":{
         border: `1px solid ${theme.colors.input.border}`,
     }

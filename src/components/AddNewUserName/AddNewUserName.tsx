@@ -1,8 +1,8 @@
 import React, {FC, useState} from 'react';
 import {Input, SAddNewUserName, SAddNewUserNameForm, SButton, SText} from "./styled";
-import {UserType} from "../../../App";
+import {UserType} from "../../App";
 import {v1} from "uuid";
-import {getRandomColor} from "../../../common/utils/getRandomColor";
+import {getRandomColor} from "../../common/utils/getRandomColor";
 
 
 type TAddNewUserNameProps = {
@@ -28,7 +28,7 @@ export const AddNewUserName: FC<TAddNewUserNameProps> = (props) => {
     return (
         <SAddNewUserName>
             <SText>
-                Hello! Please, enter your name
+                Please, enter your name
             </SText>
             <SAddNewUserNameForm>
                 <Input

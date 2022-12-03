@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {SChat} from "./components/Message/styled";
-import {SMainText, SSiteWrapper} from "./components/styled";
+import {SMainText, SSiteHeader, SSiteWrapper} from "./components/styled";
 import {ChatContent} from "./components/Chat/ChatContent";
-import {AddNewUserName} from "./components/Chat/AddNewUserName/AddNewUserName";
+import {AddNewUserName} from "./components/AddNewUserName/AddNewUserName";
 import {getStateFromSS, saveStateToSS} from "./common/utils/sessionStorage";
 
 export type UserType = {
@@ -31,13 +31,18 @@ function App() {
 
     return (
         <SSiteWrapper>
-            <SMainText>
-                This is chat for alone people
-            </SMainText>
-            <SMainText>
-                You can <a href={window.location.href} target={"_blank"}>open another tab</a> and chat with yourself!
-            </SMainText>
-            <br />
+            <SSiteHeader>
+                <SMainText>
+                    This is chat for alone people
+                </SMainText>
+                <SMainText>
+                    You can
+                    <a href={window.location.href} target={"_blank"}>
+                        open another tab
+                    </a>
+                    and chat with yourself!
+                </SMainText>
+            </SSiteHeader>
             <SChat>
                 {user
                     ? <ChatContent user={user} />

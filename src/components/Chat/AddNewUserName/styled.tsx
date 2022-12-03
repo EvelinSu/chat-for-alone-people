@@ -34,9 +34,13 @@ export const SButton = styled.button(props => ({
     backgroundColor: theme.colors.button.success,
     border: "none",
     outline: "none",
+    cursor: "pointer",
     color: "#fff",
     "&:disabled": {
         opacity: 0.3
+    },
+    "&:hover": {
+        opacity: 0.7
     }
 }))
 

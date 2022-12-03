@@ -10,6 +10,7 @@ type TChatPanelProps = {
     user: UserType
     scrollToBottom: () => void
     clearInterval: () => void
+    startTimer: () => void
 }
 const ChatPanel: FC<TChatPanelProps> = (props) => {
 
@@ -41,6 +42,7 @@ const ChatPanel: FC<TChatPanelProps> = (props) => {
             setMessage('')
             props.scrollToBottom()
         }
+        props.startTimer()
     }
 
     const onFocusHandler = () => {

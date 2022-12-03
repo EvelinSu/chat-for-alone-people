@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SChat} from "./components/Message/styled";
 import {SMainText, SSiteWrapper} from "./components/styled";
 import {ChatContent} from "./components/Chat/ChatContent";
@@ -27,21 +27,21 @@ function App() {
 
     useEffect(() => {
         getUserFromSS()
-        return( () => {
-            sessionStorage.clear()
-        })
     }, [])
 
     return (
         <SSiteWrapper>
             <SMainText>
-                This is chat for alone people<br/>
-                You can open another tab and chat with yourself!
+                This is chat for alone people
             </SMainText>
+            <SMainText>
+                You can <a href={window.location.href} target={"_blank"}>open another tab</a> and chat with yourself!
+            </SMainText>
+            <br />
             <SChat>
                 {user
-                    ? <ChatContent user={user}/>
-                    : <AddNewUserName addNewUser={addNewUserHandler}/>
+                    ? <ChatContent user={user} />
+                    : <AddNewUserName addNewUser={addNewUserHandler} />
                 }
             </SChat>
         </SSiteWrapper>

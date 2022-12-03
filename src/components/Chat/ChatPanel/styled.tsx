@@ -6,16 +6,16 @@ export const SChatTextarea = styled.textarea((props) => ({
     borderRadius: 20,
     backgroundColor: "rgba(255, 255, 255, 0.1)",
     color: "inherit",
-    border: "none",
+    border: "1px solid transparent",
     outline: "none",
     resize: "none",
     fontSize: "inherit",
-    height: 42,
+    height: 84,
     font: "inherit",
     width: "100%",
     transition: "0.2s",
     "&:focus": {
-        height: "84px",
+        border: `1px solid rgba(255, 255, 255, 0.3) `,
     }
 }))
 
@@ -32,9 +32,11 @@ export const SChatButton = styled.button((props) => ({
     borderRadius: 20,
     border: "none",
     outline: "none",
-    padding: "0 20px",
+    padding: "0 30px",
+    fontSize: 16,
     backgroundColor: theme.colors.button.success,
     color: "#fff",
+    cursor: "pointer",
     transition: "0.2s",
     "&:hover": {
         transform: "scale(0.9)"

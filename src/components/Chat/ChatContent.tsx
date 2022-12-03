@@ -83,6 +83,7 @@ export const ChatContent: FC<ChatContentType> = (props) => {
                 addNewMessage={addNewMessageHandler}
                 scrollToBottom={scrollToBottomHandler}
                 clearInterval={() => clearInterval(timerId)}
+                startTimer={() => checkActualMessages()}
             />
         </>
 

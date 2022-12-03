@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/chatForAlonePeople/static/css/main.5bd294b5.css",
+    "main.js": "/chatForAlonePeople/static/js/main.6ce1328f.js",
+    "index.html": "/chatForAlonePeople/index.html",
+    "main.5bd294b5.css.map": "/chatForAlonePeople/static/css/main.5bd294b5.css.map",
+    "main.6ce1328f.js.map": "/chatForAlonePeople/static/js/main.6ce1328f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5bd294b5.css",
+    "static/js/main.6ce1328f.js"
+  ]
+}

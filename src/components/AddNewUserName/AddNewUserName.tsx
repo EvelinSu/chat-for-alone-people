@@ -12,10 +12,11 @@ export const AddNewUserName: FC<TAddNewUserNameProps> = (props) => {
     const [userName, setUserName] = useState('')
 
     const onClickHandler = () => {
+        if (userName.trim().length < 1) return
         const randomColor = getRandomColor()
         const newUser: UserType = {
             id: v1(),
-            name: userName,
+            name: userName.trim(),
             avatarColor: randomColor
         }
         props.addNewUser(newUser)

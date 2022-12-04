@@ -9,6 +9,7 @@ export const SChat = styled.div((props) => ({
     maxWidth: 750,
     width: "100%",
     height: "100%",
+    minHeight: 500,
     overflow: "auto",
     borderRadius: 30,
 }))

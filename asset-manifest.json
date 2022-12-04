@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/chat-for-alone-people/static/css/main.5bd294b5.css",
-    "main.js": "/chat-for-alone-people/static/js/main.a7166c6c.js",
+    "main.js": "/chat-for-alone-people/static/js/main.816f4e1b.js",
     "index.html": "/chat-for-alone-people/index.html",
     "main.5bd294b5.css.map": "/chat-for-alone-people/static/css/main.5bd294b5.css.map",
-    "main.a7166c6c.js.map": "/chat-for-alone-people/static/js/main.a7166c6c.js.map"
+    "main.816f4e1b.js.map": "/chat-for-alone-people/static/js/main.816f4e1b.js.map"
   },
   "entrypoints": [
     "static/css/main.5bd294b5.css",
-    "static/js/main.a7166c6c.js"
+    "static/js/main.816f4e1b.js"
   ]
 }

@@ -33,7 +33,7 @@ function App() {
         <SSiteWrapper>
             <SSiteHeader>
                 <SMainText>
-                    This is chat for lonely people
+                    This is chat for people who are alone
                 </SMainText>
                 <SMainText>
                     You can

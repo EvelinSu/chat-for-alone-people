@@ -21,7 +21,7 @@ export const AddNewUserName: FC<TAddNewUserNameProps> = (props) => {
         props.addNewUser(newUser)
     }
 
-    const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const onKeyUpHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") onClickHandler()
     }
 
@@ -33,7 +33,7 @@ export const AddNewUserName: FC<TAddNewUserNameProps> = (props) => {
             <SAddNewUserNameForm>
                 <Input
                     value={userName}
-                    onKeyDown={onKeyDownHandler}
+                    onKeyUp={onKeyUpHandler}
                     onChange={(e) => setUserName(e.currentTarget.value)}
                 />
                 <SButton

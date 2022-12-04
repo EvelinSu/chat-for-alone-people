@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 import {theme} from "../../styles/baseTheme";
 
 export const SChat = styled.div((props) => ({
@@ -6,7 +6,7 @@ export const SChat = styled.div((props) => ({
     flexDirection: "column",
     justifyContent: "space-between",
     backgroundColor: theme.colors.darkAlpha,
-    maxWidth: 850,
+    maxWidth: 750,
     width: "100%",
     height: "100%",
     overflow: "auto",
@@ -31,32 +31,41 @@ export const SMessagesNotFound = styled.div((props) => ({
     textAlign: "center",
 }))
 
-export const SMessage = styled.div<{ isMine?: boolean }>(props => ({
-    display: "flex",
-    alignItems: "flex-end",
-    wordBreak: "break-word",
-    whiteSpace: "pre-line",
-    gap: 10,
-    columnGap: 10,
-    rowGap: 10,
-    fontSize: 14,
-    color: "#fff",
-    ...props.isMine && {
-        flexDirection: "row-reverse",
+export const SMessage = styled.div<{ isMine?: boolean }>`
+    display: flex;
+    align-items: flex-end;
+    word-break: break-word;
+    white-space: pre-line;
+    gap: 10px;
+    column-gap: 10px;
+    row-gap: 10px;
+    max-width: 70%;
+    color: #fff;
+    ${props => props.isMine && css`
+        flex-direction: row-reverse;
+        margin-left: auto;
+    `};
+    @media all and (max-width: 640px) {
+        max-width: 100%;
     }
-}))
+`
 
-export const SMessageAvatar = styled.div<{ color: string }>(props => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: 20,
-    borderRadius: "50%",
-    border: "1px solid rgba(0, 0, 0, 0.3)",
-    width: 50,
-    height: 50,
-    backgroundColor: props.color
-}))
+export const SMessageAvatar = styled.div<{ color: string }>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    min-width: 50px;
+    min-height: 50px;
+    background-color: ${props => props.color};
+    @media all and (max-width: 760px) {
+        min-width: 35px;
+        min-height: 35px;
+        font-size: 16px;
+    }
+`
 
 export const SMessageContainer = styled.div<{ isMine?: boolean }>(({isMine}) => ({
     display: "flex",
@@ -64,9 +73,7 @@ export const SMessageContainer = styled.div<{ isMine?: boolean }>(({isMine}) => 
     position: "relative",
     padding: "8px 12px 10px 12px",
     backgroundColor: theme.colors.primary,
-    borderRadius: "10px 10px 10px 10px",
-    maxWidth: "60%",
-    transition: "1s",
+    borderRadius: 15,
     "&:after": {
         content: '""',
         position: "absolute",
@@ -87,13 +94,13 @@ export const SMessageContainer = styled.div<{ isMine?: boolean }>(({isMine}) => 
     },
     ...isMine && {
         backgroundColor: theme.colors.secondary,
-    }
+    },
 }))
 
 export const SMessageContent = styled.div(props => ({
     display: "flex",
     flexWrap: "wrap",
-    zIndex: 1,
+    zIndex: 1
 }))
 
 export const SMessageTitle = styled.span((props) => ({
@@ -117,6 +124,6 @@ export const SMessageTime = styled.div(props => ({
     opacity: 0.4,
     marginLeft: "auto",
     paddingLeft: 10,
-    margin: "auto 0 -2px auto",
+    margin: "auto 0 -5px auto",
     fontSize: "12px",
 }))

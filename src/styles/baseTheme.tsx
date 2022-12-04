@@ -1,9 +1,9 @@
 export const theme = {
     colors: {
         primary: '#344162',
-        darkAlpha: 'rgba(52,65,98,0.62)',
+        darkAlpha: 'rgba(0,0,0,0.32)',
         secondary: '#222a48',
-        textOnSecondary: "#fff",
+        textOnSecondary: "#ffffff",
         disabled: {
             opacity: 0.7,
             pointerEvents: "none",

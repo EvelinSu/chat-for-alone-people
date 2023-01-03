@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {theme} from "../../styles/baseTheme";
 
-export const SAddNewUserName = styled.div((props) => ({
+export const SAddNewUserName = styled.div({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -10,14 +10,14 @@ export const SAddNewUserName = styled.div((props) => ({
     padding: 20,
     maxWidth: "100%",
     height: "100%"
-}))
+})
 
-export const SText = styled.div((props) => ({
+export const SText = styled.div({
     fontSize: 18,
     textAlign: "center",
-}))
+})
 
-export const Input = styled.input(props => ({
+export const Input = styled.input({
     borderRadius: 20,
     padding: "10px 15px",
     border: `1px solid ${theme.colors.input.default}`,
@@ -28,9 +28,9 @@ export const Input = styled.input(props => ({
     "&:focus":{
         border: `1px solid ${theme.colors.input.border}`,
     }
-}))
+})
 
-export const SButton = styled.button(props => ({
+export const SButton = styled.button({
     padding: "10px 20px",
     borderRadius: 20,
     backgroundColor: theme.colors.button.success,
@@ -44,11 +44,11 @@ export const SButton = styled.button(props => ({
     "&:hover": {
         opacity: 0.7
     }
-}))
+})
 
-export const SAddNewUserNameForm = styled.div(props => ({
+export const SAddNewUserNameForm = styled.div({
     display: "flex",
     alignItems: "center",
     gap: 20,
-}))
+})
 

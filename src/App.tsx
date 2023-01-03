@@ -3,7 +3,7 @@ import {SChat} from "./components/Message/styled";
 import {SMainText, SSiteHeader, SSiteWrapper} from "./components/styled";
 import {ChatContent} from "./components/Chat/ChatContent";
 import {AddNewUserName} from "./components/AddNewUserName/AddNewUserName";
-import {getStateFromSS, saveStateToSS} from "./common/utils/sessionStorage";
+import {getStateFromSessionStorage, saveStateToSessionStorage} from "./common/utils/sessionStorage";
 
 export type UserType = {
     id: string
@@ -16,13 +16,13 @@ function App() {
     const [user, setUser] = useState<UserType | null>()
 
     const getUserFromSS = async () => {
-        const currentUser = await getStateFromSS<UserType>('user')
+        const currentUser = await getStateFromSessionStorage<UserType>('user')
         currentUser ? setUser(currentUser) : setUser(null)
     }
 
     const addNewUserHandler = (newUser: UserType) => {
         setUser(newUser)
-        saveStateToSS<UserType>('user', newUser)
+        saveStateToSessionStorage<UserType>('user', newUser)
     }
 
     useEffect(() => {
@@ -50,7 +50,6 @@ function App() {
                 }
             </SChat>
         </SSiteWrapper>
-
     );
 }
 

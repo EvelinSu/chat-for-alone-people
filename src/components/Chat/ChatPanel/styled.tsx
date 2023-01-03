@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SChatTextarea = styled.textarea((props) => ({
+export const SChatTextarea = styled.textarea({
     padding: "10px 15px",
     borderRadius: 20,
     backgroundColor: "rgba(255, 255, 255, 0.1)",
@@ -16,16 +16,16 @@ export const SChatTextarea = styled.textarea((props) => ({
     "&:focus": {
         border: `1px solid rgba(255, 255, 255, 0.3) `,
     }
-}))
+})
 
-export const SChatPanel = styled.div((props) => ({
+export const SChatPanel = styled.div({
     display: "flex",
     padding: "15px 0 15px 15px",
     alignItems: "center",
     marginTop: "auto"
-}))
+})
 
-export const SChatButton = styled.button((props) => ({
+export const SChatButton = styled.button({
     height: "100%",
     borderRadius: 20,
     border: "none",
@@ -47,4 +47,4 @@ export const SChatButton = styled.button((props) => ({
         opacity: 0.3,
         pointerEvents: "none",
     }
-}))
+})

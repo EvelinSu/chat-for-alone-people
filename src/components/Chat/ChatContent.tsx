@@ -2,7 +2,7 @@ import React, {FC, useEffect, useRef, useState} from 'react';
 import {SChatMessages, SMessagesNotFound} from "../Message/styled";
 import Message from "../Message/Message";
 import {UserType} from "../../App";
-import {getStateFromLS, saveStateToLS} from "../../common/utils/localStorage";
+import {getStateFromLocalStorage, saveStateToLocalStorage} from "../../common/utils/localStorage";
 import ChatPanel from "./ChatPanel/ChatPanel";
 
 export type MessageType = {
@@ -24,15 +24,15 @@ export const ChatContent: FC<ChatContentType> = (props) => {
     const scrollToBottomRef = useRef(null)
 
     const addNewMessageHandler = async (newMessage: MessageType) => {
-        await getMessagesFromLS()
+        await getMessagesFromLocalStorage()
             .then((res) => {
-                saveStateToLS<MessageType[]>("messages", [...res, newMessage])
+                saveStateToLocalStorage<MessageType[]>("messages", [...res, newMessage])
                 setMessages([...res, newMessage])
             })
     }
 
-    const getMessagesFromLS = async () => {
-        const currentMessages = await getStateFromLS<MessageType[]>("messages")
+    const getMessagesFromLocalStorage = async () => {
+        const currentMessages = await getStateFromLocalStorage<MessageType[]>("messages")
         if (currentMessages) {
             setMessages(currentMessages)
         }
@@ -42,7 +42,7 @@ export const ChatContent: FC<ChatContentType> = (props) => {
     const checkActualMessages = () => {
         clearInterval(timerId);
         const id: number = window.setInterval(() => {
-            getMessagesFromLS()
+            getMessagesFromLocalStorage()
         }, 2000)
         setTimerId(id)
     }
@@ -60,7 +60,7 @@ export const ChatContent: FC<ChatContentType> = (props) => {
 
     useEffect(() => {
         checkActualMessages()
-        getMessagesFromLS()
+        getMessagesFromLocalStorage()
     }, [])
 
     useEffect(() => {
@@ -89,7 +89,7 @@ export const ChatContent: FC<ChatContentType> = (props) => {
                 addNewMessage={addNewMessageHandler}
                 scrollToBottom={scrollToBottomHandler}
                 clearInterval={() => clearInterval(timerId)}
-                startTimer={() => checkActualMessages()}
+                startTimer={checkActualMessages}
             />
         </>
 

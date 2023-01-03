@@ -1,7 +1,7 @@
 import styled, {css} from "styled-components";
 import {theme} from "../../styles/baseTheme";
 
-export const SChat = styled.div((props) => ({
+export const SChat = styled.div({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -12,25 +12,25 @@ export const SChat = styled.div((props) => ({
     minHeight: 500,
     overflow: "auto",
     borderRadius: 30,
-}))
+})
 
-export const SChatMessages = styled.div((props) => ({
+export const SChatMessages = styled.div({
     display: "flex",
     flexDirection: "column",
     overflow: "auto",
     gap: 10,
     padding: 20,
     height: "100%",
-}))
+})
 
-export const SMessagesNotFound = styled.div((props) => ({
+export const SMessagesNotFound = styled.div({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.3,
     flexGrow: 1,
     textAlign: "center",
-}))
+})
 
 export const SMessage = styled.div<{ isMine?: boolean }>`
     display: flex;
@@ -98,13 +98,13 @@ export const SMessageContainer = styled.div<{ isMine?: boolean }>(({isMine}) => 
     },
 }))
 
-export const SMessageContent = styled.div(props => ({
+export const SMessageContent = styled.div({
     display: "flex",
     flexWrap: "wrap",
     zIndex: 1
-}))
+})
 
-export const SMessageTitle = styled.span((props) => ({
+export const SMessageTitle = styled.span({
     marginBottom: 5,
     fontWeight: 600,
     zIndex: 1,
@@ -115,16 +115,16 @@ export const SMessageTitle = styled.span((props) => ({
     overflow: "hidden",
     textOverflow: "ellipsis",
     cursor: "pointer",
-}))
+})
 
 export const SMessageText = styled.span<{ opacity?: number }>(props => ({
     opacity: props.opacity,
 }))
 
-export const SMessageTime = styled.div(props => ({
+export const SMessageTime = styled.div({
     opacity: 0.4,
     marginLeft: "auto",
     paddingLeft: 10,
     margin: "auto 0 -5px auto",
     fontSize: "12px",
-}))
+})

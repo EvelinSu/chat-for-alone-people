@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useRef, useState} from 'react';
+import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
 import {SChatMessages, SMessagesNotFound} from "../Message/styled";
 import Message from "../Message/Message";
 import {UserType} from "../../App";
@@ -19,53 +19,51 @@ type ChatContentType = {
 }
 export const ChatContent: FC<ChatContentType> = (props) => {
     const [messages, setMessages] = useState<MessageType[]>([])
-    const [timerId, setTimerId] = useState(0)
 
-    const scrollToBottomRef = useRef(null)
+    const scrollToBottomRef = useRef<HTMLDivElement>(null)
 
-    const addNewMessageHandler = async (newMessage: MessageType) => {
-        await getMessagesFromLocalStorage()
-            .then((res) => {
-                saveStateToLocalStorage<MessageType[]>("messages", [...res, newMessage])
-                setMessages([...res, newMessage])
-            })
-    }
+    const addNewMessageHandler = useCallback((newMessage: MessageType) => {
+        const result = getMessagesFromLocalStorage();
+        const messages = result.concat(newMessage);
+        saveStateToLocalStorage<MessageType[]>("messages", messages)
+        setMessages(messages)
+    }, [])
 
-    const getMessagesFromLocalStorage = async () => {
-        const currentMessages = await getStateFromLocalStorage<MessageType[]>("messages")
-        if (currentMessages) {
+    const getMessagesFromLocalStorage = () => {
+        const currentMessages = getStateFromLocalStorage<MessageType[]>("messages")
+        if (currentMessages && currentMessages.length !== messages.length) {
             setMessages(currentMessages)
         }
         return currentMessages || []
     }
 
-    const checkActualMessages = () => {
-        clearInterval(timerId);
-        const id: number = window.setInterval(() => {
-            getMessagesFromLocalStorage()
-        }, 2000)
-        setTimerId(id)
+    const scrollToBottomHandler = () => {
+        const ref = scrollToBottomRef.current as HTMLDivElement
+        ref.scrollTo({
+            top: ref.scrollHeight,
+            behavior: "smooth"
+        })
     }
 
-    const scrollToBottomHandler = () => {
-        const ref = scrollToBottomRef.current as unknown as HTMLDivElement
-        setTimeout(() => {
-            ref.scrollTo({
-                top: ref.scrollHeight,
-                left: 0,
-                behavior: "smooth"
-            })
-        }, 0)
+    const localStorageListener = (e: StorageEvent) => {
+        if (e.storageArea === localStorage) {
+            setTimeout(() => {
+                getMessagesFromLocalStorage()
+            }, 2000)
+        }
     }
 
     useEffect(() => {
-        checkActualMessages()
         getMessagesFromLocalStorage()
+        window.addEventListener('storage', localStorageListener)
+        return () => {
+            window.removeEventListener('storage', localStorageListener)
+        }
     }, [])
 
     useEffect(() => {
         scrollToBottomHandler()
-    }, [messages.length])
+    }, [localStorageListener])
 
     return (
         <>
@@ -86,10 +84,7 @@ export const ChatContent: FC<ChatContentType> = (props) => {
             </SChatMessages>
             <ChatPanel
                 user={props.user}
-                addNewMessage={addNewMessageHandler}
-                scrollToBottom={scrollToBottomHandler}
-                clearInterval={() => clearInterval(timerId)}
-                startTimer={checkActualMessages}
+                onAddNewMessage={addNewMessageHandler}
             />
         </>
 

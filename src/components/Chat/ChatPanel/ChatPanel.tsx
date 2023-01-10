@@ -7,13 +7,10 @@ import {MessageType} from "../ChatContent";
 import {SendFillIcon} from "../../../assets/icons/SendFillIcon";
 
 type TChatPanelProps = {
-    addNewMessage: (newMessage: MessageType) => void
+    onAddNewMessage: (newMessage: MessageType) => void
     user: UserType
-    scrollToBottom: () => void
-    clearInterval: () => void
-    startTimer: () => void
 }
-const ChatPanel: FC<TChatPanelProps> = (props) => {
+const ChatPanel: FC<TChatPanelProps> = React.memo((props) => {
 
     const [message, setMessage] = useState('')
 
@@ -39,16 +36,9 @@ const ChatPanel: FC<TChatPanelProps> = (props) => {
             avatarColor: props.user.avatarColor
         }
         if (message.trim() !== '') {
-            props.addNewMessage(newMessage)
+            props.onAddNewMessage(newMessage)
             setMessage('')
-            props.scrollToBottom()
         }
-        props.startTimer()
-    }
-
-    const onFocusHandler = () => {
-        setTimeout(() => props.scrollToBottom(), 200)
-        props.clearInterval()
     }
 
     return (
@@ -56,7 +46,6 @@ const ChatPanel: FC<TChatPanelProps> = (props) => {
             <SChatTextarea
                 onKeyDown={onKeyPressHandler}
                 value={message}
-                onFocus={onFocusHandler}
                 onChange={onChangeHandler}
                 placeholder={"Write your message..."}
                 autoFocus
@@ -69,6 +58,6 @@ const ChatPanel: FC<TChatPanelProps> = (props) => {
             </SChatButton>
         </SChatPanel>
     );
-};
+});
 
 export default ChatPanel;

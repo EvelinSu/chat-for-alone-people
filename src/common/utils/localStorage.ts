@@ -1,5 +1,5 @@
-export async function getStateFromLocalStorage<T>(key: string) {
-    const stateAsString = await localStorage.getItem(key)
+export function getStateFromLocalStorage<T>(key: string) {
+    const stateAsString = localStorage.getItem(key)
     if (stateAsString !== null) return JSON.parse(stateAsString) as T
 }
 

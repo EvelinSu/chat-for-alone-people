@@ -13,20 +13,15 @@ export type UserType = {
 
 function App() {
 
-    const [user, setUser] = useState<UserType | null>()
-
-    const getUserFromSS = async () => {
-        const currentUser = await getStateFromSessionStorage<UserType>('user')
-        currentUser ? setUser(currentUser) : setUser(null)
-    }
+    const [currentUser, setCurrentUser] = useState<UserType>()
 
     const addNewUserHandler = (newUser: UserType) => {
-        setUser(newUser)
-        saveStateToSessionStorage<UserType>('user', newUser)
+        setCurrentUser(newUser);
+        saveStateToSessionStorage<UserType>('user', newUser);
     }
 
     useEffect(() => {
-        getUserFromSS()
+       setCurrentUser(getStateFromSessionStorage<UserType>('user'))
     }, [])
 
     return (
@@ -44,8 +39,8 @@ function App() {
                 </SMainText>
             </SSiteHeader>
             <SChat>
-                {user
-                    ? <ChatContent user={user} />
+                {currentUser
+                    ? <ChatContent user={currentUser} />
                     : <AddNewUserName addNewUser={addNewUserHandler} />
                 }
             </SChat>

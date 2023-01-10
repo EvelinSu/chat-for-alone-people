@@ -16,7 +16,7 @@ export type MessagePropsType = {
     avatarColor: string
     isMine: boolean
 }
-const Message: FC<MessagePropsType> = ({text, time, isMine, name, avatarColor}) => {
+const Message: FC<MessagePropsType> = React.memo(({text, time, isMine, name, avatarColor}) => {
 
     return (
         <SMessage isMine={isMine}>
@@ -32,6 +32,6 @@ const Message: FC<MessagePropsType> = ({text, time, isMine, name, avatarColor}) 
             </SMessageContainer>
         </SMessage>
     )
-}
+})
 
 export default Message;
